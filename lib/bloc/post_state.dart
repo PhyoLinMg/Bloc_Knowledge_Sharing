@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import 'package:flutter_infinite_list/models/models.dart';
+import 'package:bloc_knowledge_sharing/models/models.dart';
 
 abstract class PeriodState extends Equatable {
   const PeriodState();

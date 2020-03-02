@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:flutter_infinite_list/models/periods.dart';
-import 'package:flutter_infinite_list/network/network.dart';
+import 'package:bloc_knowledge_sharing/models/periods.dart';
+import 'package:bloc_knowledge_sharing/network/network.dart';
 import 'package:meta/meta.dart';
 
 

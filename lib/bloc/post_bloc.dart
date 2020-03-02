@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:flutter_infinite_list/network/MainService.dart';
+import 'package:bloc_knowledge_sharing/network/MainService.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:bloc/bloc.dart';
-import 'package:flutter_infinite_list/bloc/bloc.dart';
+import 'package:bloc_knowledge_sharing/bloc/bloc.dart';
 
 
 class PeriodBloc extends Bloc<PeriodEvent, PeriodState> {

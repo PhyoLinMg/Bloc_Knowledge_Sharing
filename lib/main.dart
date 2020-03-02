@@ -1,13 +1,14 @@
+import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
-import 'package:flutter_infinite_list/network/network.dart';
-import 'package:flutter_infinite_list/repository/repository.dart';
-import 'package:flutter_infinite_list/widgets/widgets.dart';
+import 'package:bloc_knowledge_sharing/network/network.dart';
+import 'package:bloc_knowledge_sharing/repository/repository.dart';
+import 'package:bloc_knowledge_sharing/widgets/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_infinite_list/bloc/bloc.dart';
+import 'package:bloc_knowledge_sharing/bloc/bloc.dart';
 
 void main() {
   final PeriodRepository repository=PeriodRepository(mainService: MainService(httpClient: http.Client()));
@@ -21,103 +22,23 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return DynamicTheme(
+      defaultBrightness: Brightness.dark,
+      data: (brightness) => new ThemeData(
+        primarySwatch: Colors.lightBlue,
+        brightness: brightness
+      ),
+      themedWidgetBuilder: (context,theme){
+          return MaterialApp(
       title: 'Flutter Bloc',
       home: Scaffold(
-        drawer:Drawer(
-      child: Column(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                child: DrawerHeader(
-                  child: Text("Header"),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: ListView(children: [
-                ListTile(
-                  title: Text("Home"),
-                  onTap: () {
-                      Fluttertoast.showToast(
-                            msg: "This is Home",
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.CENTER,
-                            timeInSecForIos: 1,
-                            backgroundColor: Colors.cyanAccent,
-                            textColor: Colors.white,
-                            fontSize: 16.0
-                        );
-                  },
-                ),
-                ListTile(
-                  title: Text("Peroids"),
-                  onTap: () {
-                    Fluttertoast.showToast(
-                            msg: "This is Periods",
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.CENTER,
-                            timeInSecForIos: 1,
-                            backgroundColor: Colors.cyanAccent,
-                            textColor: Colors.white,
-                            fontSize: 16.0
-                        );
-                  },
-                ),
-                ListTile(
-                  title: Text("Subjects"),
-                  onTap: () {
-                     Fluttertoast.showToast(
-                            msg: "This is Subjects",
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.CENTER,
-                            timeInSecForIos: 1,
-                            backgroundColor: Colors.cyanAccent,
-                            textColor: Colors.white,
-                            fontSize: 16.0
-                        );
-                  },
-                ),
-                ListTile(
-                  title: Text("Home"),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                ListTile(
-                  title: Text("Home"),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                ListTile(
-                  title: Text("Home"),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                ListTile(
-                  title: Text("Home"),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                ListTile(
-                  title: Text("Home"),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                )
-              ]),
-            )
-          ],
-        ),
-  )
-        ,
         appBar: AppBar(
           title: Text('Periods'),
+          actions: <Widget>[
+                IconButton(icon: Icon(Icons.settings), onPressed: (){
+                  // Navigator.push(context,MaterialPageRoute(builder: (context) => Settings()));
+               })
+          ],
         ),
         body: BlocProvider(
           create: (context) =>
@@ -125,6 +46,8 @@ class App extends StatelessWidget {
           child: HomePage(),
         ),
       ),
+    );
+      },
     );
   }
 }

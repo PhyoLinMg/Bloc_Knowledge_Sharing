@@ -1,4 +1,4 @@
-import 'package:flutter_infinite_list/models/data.dart';
+import 'package:bloc_knowledge_sharing/models/data.dart';
 
 class Periods {
 

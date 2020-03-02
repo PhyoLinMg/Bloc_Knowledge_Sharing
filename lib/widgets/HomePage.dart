@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_infinite_list/widgets/PeriodListWidget.dart';
+import 'package:bloc_knowledge_sharing/widgets/PeriodListWidget.dart';
 
 import '../bloc/bloc.dart';
 
